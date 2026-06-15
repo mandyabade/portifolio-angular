@@ -1,0 +1,56 @@
+mat-card {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 32px;
+  border-radius: 20px !important;
+  background: #ffffff;
+  border: 1px solid #ffd6e7;
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.08);
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+mat-card-title {
+  color: #e91e63;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+mat-card-subtitle {
+  color: #888;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+mat-card-content {
+  margin-top: 16px;
+}
+
+mat-card-content p {
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  mat-card {
+    margin: 24px 16px;
+    padding: 24px;
+  }
+
+  mat-card-title {
+    font-size: 1.6rem;
+    margin-bottom: 12px !important;
+  }
+
+  mat-card-content p {
+    font-size: 1rem;
+  }
+}

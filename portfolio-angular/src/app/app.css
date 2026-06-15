@@ -1,78 +1,137 @@
+/* =========================
+   GERAL
+========================= */
+
+html,
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #fff7fc, #fce4ec);
-  color: #333;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f2f7;
 }
 
-header {
-  background: linear-gradient(135deg, #d81b60, #c2185b);
-  color: white;
-  padding: 40px;
-  border-radius: 20px;
+.container {
+  height: 100vh;
+}
+
+/* =========================
+   MENU LATERAL
+========================= */
+
+.sidenav {
+  width: 250px;
+  background: #ffffff;
+  border-right: 1px solid #f7c5d8;
+}
+
+.logo {
   text-align: center;
-  box-shadow: 0 8px 20px rgba(216, 27, 96, 0.25);
+  padding: 24px;
+  border-bottom: 1px solid #f7c5d8;
 }
 
-header h1 {
+.logo h2 {
   margin: 0;
-  font-size: 2rem;
+  color: #e91e63;
+  font-size: 28px;
+  font-weight: 700;
 }
 
-header p {
-  margin-top: 20px; 
-  font-size: 1.1rem;
-  line-height: 1.5;
+/* =========================
+   MENU SUPERIOR
+========================= */
+
+.mat-toolbar {
+  background: #ffffff !important;
+  color: #e91e63 !important;
+  border-bottom: 1px solid #f7c5d8;
+  box-shadow: none !important;
 }
 
-section {
-  background: white;
-  margin: 25px auto;
-  padding: 25px;
-  border-radius: 18px;
-  max-width: 900px;
-  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.1);
-  border-left: 6px solid #d81b60;
-  transition: transform 0.3s ease;
+.titulo {
+  color: #e91e63;
+  font-size: 32px;
+  font-weight: bold;
 }
 
-section:hover {
-  transform: translateY(-4px);
+.espacador {
+  flex: 1 1 auto;
 }
 
-h2 {
-  color: #d81b60;
-  margin-bottom: 15px;
-}
+/* =========================
+   LINKS DO TOPO
+========================= */
 
-ul li {
-  margin-bottom: 8px;
-}
-
-button {
-  background: linear-gradient(135deg, #d81b60, #ad1457);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
+.mat-toolbar a {
+  color: #555 !important;
   font-weight: 600;
-  cursor: pointer;
   transition: 0.3s;
-  display: block;
-  margin: 30px auto;
 }
 
-button:hover {
-  background: linear-gradient(135deg, #e91e63, #c2185b);
-  transform: scale(1.05);
+.mat-toolbar a:hover {
+  color: #e91e63 !important;
 }
 
-a {
-  color: #d81b60;
-  text-decoration: none;
+/* =========================
+   LINKS LATERAIS
+========================= */
+
+.mat-mdc-list-item {
+  margin: 6px 8px !important;
+  border-radius: 14px !important;
+  color: #555 !important;
+  transition: 0.3s;
 }
 
-a:hover {
-  text-decoration: underline;
+.mat-mdc-list-item:hover {
+  background: #fdeef4 !important;
+  color: #e91e63 !important;
+}
+
+/* =========================
+   ITEM ATIVO
+========================= */
+
+.ativo {
+  background: linear-gradient(
+    90deg,
+    #fde6ef,
+    #fff5f9
+  ) !important;
+
+  color: #e91e63 !important;
+  font-weight: 700 !important;
+
+  border-left: 4px solid #e91e63;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.conteudo {
+  padding: 24px;
+  background: #f4f2f7;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f2f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f7c5d8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e91e63;
 }

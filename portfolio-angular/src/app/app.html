@@ -1,31 +1,64 @@
-<header>
-  <h1>Mandy Abade</h1>
-  <p>Estudante de informática no IFPR. Este portfólio apresenta meus projetos e minha evolução na programação.</p>
-</header>
+<mat-sidenav-container class="container">
 
-<section>
-  <h2>Sobre Mim</h2>
-  <p>
-    Sou estudante do IFPR CRPG, faço o curso técnico de Informática integrado ao ensino médio.
-    Gosto de progamar e principalmente de banco de dados, 
-    mas fora da vida acadêmica gosto de ir à academia, fazer as unhas, 
-    assistir séries novas e ouvir música.
-  </p>
-</section>
+  <mat-sidenav opened mode="side" class="sidenav">
 
-<section>
-  <h2>Projetos</h2>
-  <ul>
-    <li>Portfólio Interativo</li>
-    <li>Projeto de insersão em banco de dados</li>
-  </ul>
-</section>
+    <div class="logo">
+      <h2>Portfólio</h2>
+    </div>
 
-<section>
-  <h2>Contato</h2>
-  <p>Email: antunes120409@email.com</p>
-</section>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">
+        Início
+      </a>
 
-<button mat-raised-button color="primary">
-  Entre em contato
-</button>
+      <a mat-list-item routerLink="/sobre" routerLinkActive="ativo">
+        Sobre
+      </a>
+
+      <a mat-list-item routerLink="/projetos" routerLinkActive="ativo">
+        Projetos
+      </a>
+
+      <a mat-list-item routerLink="/contato" routerLinkActive="ativo">
+        Contato
+      </a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+
+      <span class="titulo">
+        Meu Portfólio
+      </span>
+
+      <span class="espacador"></span>
+
+      <a mat-button routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">
+        Início
+      </a>
+
+      <a mat-button routerLink="/sobre" routerLinkActive="ativo">
+        Sobre
+      </a>
+
+      <a mat-button routerLink="/projetos" routerLinkActive="ativo">
+        Projetos
+      </a>
+
+      <a mat-button routerLink="/contato" routerLinkActive="ativo">
+        Contato
+      </a>
+
+    </mat-toolbar>
+
+    <main class="conteudo">
+      <router-outlet></router-outlet>
+    </main>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
