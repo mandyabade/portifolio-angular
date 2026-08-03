@@ -16,9 +16,17 @@ export class Projetos implements OnInit {
   erro = '';
 
   ngOnInit() {
-    this.service.listar().subscribe({
-      next: (lista) => {this.projetos = lista; this.carregando = false;},
-      error: () => { this.erro = 'Falha ao carregar os projetos.'; this.carregando = false; }
-    });
-  }
+  this.service.listar().subscribe({
+    next: (lista) => {
+      console.log('Projetos recebidos:', lista);
+      this.projetos = lista;
+      this.carregando = false;
+    },
+    error: (err) => {
+      console.error(err);
+      this.erro = 'Falha ao carregar os projetos.';
+      this.carregando = false;
+    }
+  });
+}
 }
