@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
-
+import { HttpErrorResponse } from '@angular/common/http';
 import { ContatoService } from '../contato.service';
 
 @Component({
@@ -31,6 +31,11 @@ export class Contato {
 
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      const primeiroInvalido = document.querySelector(
+        'input.ng-invalid, textarea.ng-invalid'
+      ) as HTMLElement | null;
+       primeiroInvalido?.focus();
+
       return;
     }
 
@@ -42,8 +47,15 @@ export class Contato {
         this.form.reset();
         this.enviando = false;
       },
-      error: () => {
-        this.erro = 'Não foi possível enviar. Tente novamente.';
+      error: (err: HttpErrorResponse) => {
+
+        const errosBack = err.error?.erros;
+
+        if (Array.isArray(errosBack)) {
+          this.erro = errosBack.join(' ');
+        } else {
+          this.erro = 'Não foi possível enviar, tente de novo.';
+        }
         this.enviando = false;
       },
     });

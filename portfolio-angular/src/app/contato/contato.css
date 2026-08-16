@@ -87,10 +87,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* =========================
-   MENSAGENS
-========================= */
-
 .ok,
 .erro {
   max-width: 700px;
@@ -106,8 +102,40 @@ button:disabled {
   color: #c2185b;
 }
 
+
+.erro-campo {
+  margin: -12px 0 18px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #b42318;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ok {
+  max-width: 700px;
+  margin: 18px auto 0;
+  padding: 14px 18px;
+  border-radius: 10px;
+
+  background: #eaf7ee;
+  border: 1px solid #a8d5b5;
+  color: #218739;
+
+  font-weight: 600;
+}
+
 .erro {
+  max-width: 700px;
+  margin: 18px auto 0;
+  padding: 14px 18px;
+  border-radius: 10px;
+
   background: #fff1f1;
   border: 1px solid #f1bcbc;
   color: #b42318;
+
+  font-weight: 600;
 }
+
