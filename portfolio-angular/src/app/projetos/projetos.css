@@ -1,0 +1,105 @@
+/* =========================
+   PÁGINA DE PROJETOS
+========================= */
+
+:host {
+  display: block;
+}
+
+/* =========================
+   MENSAGENS
+========================= */
+
+p {
+  color: #666;
+  font-size: 16px;
+  text-align: center;
+  margin: 24px 0;
+}
+
+/* =========================
+   CARDS DOS PROJETOS
+========================= */
+
+mat-card {
+  margin-bottom: 16px;
+  background: #ffffff;
+  border: 1px solid #f7c5d8;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(233, 30, 99, 0.07);
+  transition: 0.3s;
+}
+
+mat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(233, 30, 99, 0.12);
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+mat-card-header {
+  padding: 20px 20px 12px;
+}
+
+mat-card-title {
+  color: #e91e63;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+mat-card-subtitle {
+  margin-top: 6px;
+  color: #777;
+  font-size: 14px;
+}
+
+/* =========================
+   DESCRIÇÃO
+========================= */
+
+mat-card-content {
+  padding: 0 20px 10px;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================
+   AÇÕES
+========================= */
+
+mat-card-actions {
+  padding: 10px 20px 20px;
+}
+
+/* =========================
+   LINK GITHUB
+========================= */
+
+mat-card-actions a {
+  padding: 9px 18px;
+  border-radius: 10px;
+  background: #e91e63;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+mat-card-actions a:hover {
+  background: #c2185b;
+}
+
+/* =========================
+   MENSAGEM DE ERRO
+========================= */
+
+p {
+  padding: 14px 18px;
+  background: #fff1f1;
+  border: 1px solid #f1bcbc;
+  border-radius: 10px;
+  color: #b42318;
+}

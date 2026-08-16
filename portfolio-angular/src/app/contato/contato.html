@@ -1,1 +1,19 @@
-<p>contato works!</p>
+<h2>Fale comigo</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="nome">Nome</label>
+  <input id="nome" type="text" formControlName="nome">
+
+  <label for="email">E-mail</label>
+  <input id="email" type="email" formControlName="email">
+
+  <label for="mensagem">Mensagem</label>
+  <textarea id="mensagem" formControlName="mensagem" rows="4"></textarea>
+
+  <button type="submit" [disabled]="enviando">
+    {{ enviando ? 'Enviando...' : 'Enviar' }}
+  </button>
+</form>
+
+@if (sucesso) { <p class="ok">{{ sucesso }}</p> }
+@if (erro) { <p class="erro">{{ erro }}</p> }
