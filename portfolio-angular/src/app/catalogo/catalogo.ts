@@ -6,7 +6,8 @@ import { TecnologiaService, Tecnologia } from '../tecnologia.service';
   selector: 'app-catalogo',
   standalone: true,
   imports: [MatCardModule],
-  templateUrl: './catalogo.html'
+  templateUrl: './catalogo.html',
+  styleUrl: './catalogo.css'
 })
 export class Catalogo implements OnInit {
 

@@ -6,7 +6,8 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-projetos',
   imports: [MatCardModule, MatButtonModule],
-  templateUrl: './projetos.html'
+  templateUrl: './projetos.html',
+  styleUrl: './projetos.css'
 })
 export class Projetos implements OnInit {
   private service = inject(ProjetoService);
