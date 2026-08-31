@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { ProjetoService, Projeto } from '../projeto.service';
-import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-projetos',
@@ -10,24 +10,32 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './projetos.css'
 })
 export class Projetos implements OnInit {
+
   private service = inject(ProjetoService);
+  private cdr = inject(ChangeDetectorRef);
 
   projetos: Projeto[] = [];
-  carregando = true;
   erro = '';
 
   ngOnInit() {
-  this.service.listar().subscribe({
-    next: (lista) => {
-      console.log('Projetos recebidos:', lista);
-      this.projetos = lista;
-      this.carregando = false;
-    },
-    error: (err) => {
-      console.error(err);
-      this.erro = 'Falha ao carregar os projetos.';
-      this.carregando = false;
-    }
-  });
-}
+    this.carregar();
+  }
+
+  carregar() {
+    this.service.listar().subscribe({
+      next: (lista) => {
+        this.projetos = [...lista];
+
+        this.cdr.detectChanges();
+      },
+
+      error: (err) => {
+        console.error(err);
+
+        this.erro = 'Falha ao carregar os projetos.';
+
+        this.cdr.detectChanges();
+      }
+    });
+  }
 }

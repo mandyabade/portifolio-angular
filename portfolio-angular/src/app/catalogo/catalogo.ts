@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { TecnologiaService, Tecnologia } from '../tecnologia.service';
 
@@ -12,20 +12,26 @@ import { TecnologiaService, Tecnologia } from '../tecnologia.service';
 export class Catalogo implements OnInit {
 
   private service = inject(TecnologiaService);
+  private cdr = inject(ChangeDetectorRef);
 
   tecnologias: Tecnologia[] = [];
-  carregando = true;
   erro = '';
 
   ngOnInit() {
+    this.carregar();
+  }
+
+  carregar() {
     this.service.listar().subscribe({
       next: (lista) => {
-        this.tecnologias = lista;
-        this.carregando = false;
+        this.tecnologias = [...lista];
+        this.cdr.detectChanges();
       },
-      error: () => {
+
+      error: (err) => {
+        console.error(err);
         this.erro = 'Falha ao carregar o catálogo.';
-        this.carregando = false;
+        this.cdr.detectChanges();
       }
     });
   }
