@@ -1,10 +1,17 @@
 import {Component, inject, OnInit, ChangeDetectorRef} from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import { ProjetoService, Projeto } from '../projeto.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-gestao',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
   templateUrl: './gestao.html',
   styleUrl: './gestao.css'
 })
@@ -12,6 +19,8 @@ import { ProjetoService, Projeto } from '../projeto.service';
 export class Gestao implements OnInit {
   private service = inject(ProjetoService);
   private cdr = inject(ChangeDetectorRef);
+  private auth = inject(AuthService);
+  private router = inject(Router);
 
   projetos: Projeto[] = [];
   erro = '';
@@ -121,5 +130,13 @@ export class Gestao implements OnInit {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  sair(): void {
+
+    this.auth.logout();
+
+    this.router.navigate(['/login']);
+
   }
 }

@@ -1,25 +1,21 @@
-/* =========================
-   PÁGINA DE CATÁLOGO
-========================= */
-
 :host {
   display: block;
 }
 
-/* =========================
-   MENSAGEM DE CARREGAMENTO
-========================= */
-
-p {
+.mensagem {
+  padding: 14px 18px;
+  margin: 24px 0;
+  border-radius: 10px;
+  text-align: center;
   color: #666;
   font-size: 16px;
-  text-align: center;
-  margin: 24px 0;
 }
 
-/* =========================
-   CARDS
-========================= */
+.mensagem.erro {
+  background: #fff1f1;
+  border: 1px solid #f1bcbc;
+  color: #b42318;
+}
 
 mat-card {
   margin-bottom: 16px;
@@ -34,10 +30,6 @@ mat-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 7px 18px rgba(233, 30, 99, 0.12);
 }
-
-/* =========================
-   CABEÇALHO
-========================= */
 
 mat-card-header {
   padding: 20px 20px 12px;
@@ -55,25 +47,9 @@ mat-card-subtitle {
   font-size: 14px;
 }
 
-/* =========================
-   DESCRIÇÃO
-========================= */
-
 mat-card-content {
   padding: 0 20px 20px;
   color: #555;
   font-size: 15px;
   line-height: 1.6;
-}
-
-/* =========================
-   ERRO
-========================= */
-
-p {
-  padding: 14px 18px;
-  background: #fff1f1;
-  border: 1px solid #f1bcbc;
-  border-radius: 10px;
-  color: #b42318;
 }

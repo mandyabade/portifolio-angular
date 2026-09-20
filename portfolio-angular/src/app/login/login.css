@@ -2,13 +2,15 @@
   display: block;
 }
 
-.contato-card {
-  max-width: 700px;
+.login-card {
+  max-width: 420px;
   margin: 60px auto;
   padding: 20px;
-  background: #ffffff;
+
+  background: #fff;
   border: 1px solid #f7c5d8;
   border-radius: 18px;
+
   box-shadow: 0 4px 14px rgba(233, 30, 99, 0.08);
 }
 
@@ -35,27 +37,18 @@ mat-form-field {
 
 button {
   width: 100%;
-  margin-top: 8px;
   min-height: 48px;
+  margin-top: 8px;
 }
 
-.ok,
 .erro {
-  max-width: 700px;
-  margin: 18px auto 0;
   padding: 14px 18px;
-  border-radius: 10px;
-  font-weight: 600;
-}
+  margin: 4px 0 8px;
 
-.ok {
-  background: #eaf7ee;
-  border: 1px solid #a8d5b5;
-  color: #218739;
-}
-
-.erro {
   background: #fff1f1;
   border: 1px solid #f1bcbc;
+  border-radius: 10px;
+
   color: #b42318;
+  font-size: 14px;
 }

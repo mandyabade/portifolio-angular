@@ -6,7 +6,8 @@ import { Projetos } from './projetos/projetos';
 import { Contato } from './contato/contato';
 import { Catalogo } from './catalogo/catalogo';
 import { Gestao } from './gestao/gestao';
-
+import { Login } from './login/login';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -14,6 +15,6 @@ export const routes: Routes = [
   { path: 'projetos', component: Projetos },
   { path: 'contato', component: Contato },
   { path: 'catalogo', component: Catalogo },
-  { path: 'gestao', component: Gestao }
-
+  { path: 'gestao', component: Gestao, canActivate: [authGuard] },
+  { path: 'login', component: Login }
 ];

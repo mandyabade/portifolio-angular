@@ -7,164 +7,150 @@
   margin: 0 auto;
 }
 
-.gestao h2 {
-  color: #e91e63;
-  font-size: 28px;
+.cabecalho-gestao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 24px;
 }
 
-.gestao h3 {
+.cabecalho-gestao h2 {
+  margin: 0;
   color: #e91e63;
-  margin-top: 24px;
+  font-size: 28px;
 }
 
-.gestao form {
+.btn-sair {
+  color: #e91e63 !important;
+  border-color: #e91e63 !important;
+}
+
+.form-card {
   background: #ffffff;
   border: 1px solid #f7c5d8;
   border-radius: 18px;
-  padding: 24px;
   box-shadow: 0 4px 14px rgba(233, 30, 99, 0.07);
 }
 
-.gestao label {
-  display: block;
-  margin-top: 14px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #555;
+.form-card mat-card-header {
+  margin-bottom: 20px;
 }
 
-.gestao input,
-.gestao textarea {
+.form-card mat-card-title {
+  color: #e91e63 !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+mat-form-field {
   width: 100%;
-  box-sizing: border-box;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: inherit;
-  transition: 0.2s;
 }
 
-.gestao input:focus,
-.gestao textarea:focus {
-  outline: none;
-  border-color: #e91e63;
-  box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.1);
+form button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
 }
 
-.gestao button {
-  margin-top: 18px;
-  margin-right: 8px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  background: #e91e63;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
+.gestao > h3 {
+  margin: 30px 0 16px;
+  color: #e91e63;
+  font-size: 22px;
 }
 
-.gestao button:hover {
-  background: #c2185b;
-  transform: translateY(-1px);
-}
-
-.gestao button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.erro-campo {
-  color: #b00020;
-  font-size: 0.9rem;
-  margin: 4px 0 0;
-  padding: 0;
-  background: transparent;
-  border: none;
-}
-
-.gestao > p {
-  color: #666;
-  font-size: 16px;
-  text-align: center;
-  margin: 24px 0;
-}
-
-.gestao .erro {
+.erro {
   padding: 14px 18px;
+  margin: 18px 0;
+
   background: #fff1f1;
   border: 1px solid #f1bcbc;
   border-radius: 10px;
+
   color: #b42318;
-}
-
-.linha-projeto {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 12px 14px;
-  margin-bottom: 8px;
-  background: #ffffff;
-  border: 1px solid #f7c5d8;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.05);
-  transition: 0.3s;
-}
-
-.linha-projeto:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 12px rgba(233, 30, 99, 0.1);
-}
-
-@media (max-width: 600px) {
-  .gestao {
-    width: 100%;
-  }
-
-  .gestao form {
-    padding: 18px;
-  }
-
-  .linha-projeto {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 .estado-vazio {
   padding: 20px;
   text-align: center;
-  border-radius: 8px;
+
   background: #f5f5f5;
+  border-radius: 10px;
+
   color: #555;
 }
 
-.gestao select {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: inherit;
+.projeto-card {
+  margin-bottom: 12px;
+
   background: #ffffff;
-  color: #555;
-  cursor: pointer;
-  transition: 0.2s;
+  border: 1px solid #f7c5d8;
+  border-radius: 14px;
+
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.05);
+
+  transition: 0.3s;
 }
 
-.gestao select:focus {
-  outline: none;
-  border-color: #e91e63;
-  box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.1);
+.projeto-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(233, 30, 99, 0.1);
 }
 
-.gestao option {
-  background: #ffffff;
-  color: #555;
-  font-size: 15px;
+.projeto-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.projeto-info > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.projeto-info strong {
+  color: #e91e63;
+}
+
+.projeto-info span {
+  color: #666;
+  font-size: 14px;
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+
+  .gestao {
+    width: 100%;
+  }
+
+  .cabecalho-gestao {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .projeto-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .acoes {
+    width: 100%;
+  }
+
+  .acoes button {
+    flex: 1;
+  }
 }

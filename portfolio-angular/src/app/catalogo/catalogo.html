@@ -1,13 +1,13 @@
 @if (erro) {
-  <p>{{ erro }}</p>
+  <p class="mensagem erro">{{ erro }}</p>
 }
 
 @if (tecnologias.length === 0 && !erro) {
-  <p>Nenhuma tecnologia cadastrada.</p>
+  <p class="mensagem">Nenhuma tecnologia cadastrada.</p>
 }
 
 @for (t of tecnologias; track t.id) {
-  <mat-card style="margin-bottom: 12px;">
+  <mat-card>
     <mat-card-header>
       <mat-card-title>{{ t.nome }}</mat-card-title>
       <mat-card-subtitle>{{ t.categoria }}</mat-card-subtitle>

@@ -38,7 +38,6 @@ mat-card-content p {
   text-align: justify;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
   mat-card {
     margin: 24px 16px;

@@ -1,64 +1,148 @@
 <section class="gestao">
-  <h2>Área de Gestão</h2>
 
-  <form [formGroup]="form" (ngSubmit)="salvar()">
-    <h3>{{ editandoId ? 'Editar projeto' : 'Adicionar projeto' }}</h3>
+  <div class="cabecalho-gestao">
+    <h2>Área de Gestão</h2>
 
-    <label for="nome">Nome do projeto</label>
-    <input id="nome" formControlName="nome">
-
-    @if (form.controls.nome.touched && form.controls.nome.invalid) {
-      <p class="erro-campo">
-        ⚠️ Informe o nome do projeto (mínimo 3 letras).
-      </p>
-    }
-
-    <label for="descricao">Descrição</label>
-    <textarea
-      id="descricao"
-      formControlName="descricao"
-      rows="3">
-    </textarea>
-
-    <label for="tecnologias">Tecnologias</label>
-    <input id="tecnologias" formControlName="tecnologias">
-
-    <label for="link_github">Link do GitHub</label>
-    <input id="link_github" formControlName="link_github">
-
-    <label for="ano">Ano</label>
-    <input id="ano" type="number" formControlName="ano">
-
-    @if (form.controls.ano.touched && form.controls.ano.invalid) {
-      <p class="erro-campo">
-        ⚠️ Informe o ano do projeto (ex.: 2026).
-      </p>
-    }
-
-    <label for="status">Status</label>
-    <select id="status" formControlName="status">
-      <option value="rascunho">Rascunho</option>
-      <option value="publicado">Publicado</option>
-    </select>
-
-    <button type="submit" [disabled]="salvando">
-      {{
-        salvando
-          ? 'Salvando...'
-          : (editandoId ? 'Salvar alterações' : 'Adicionar projeto')
-      }}
+    <button
+      mat-stroked-button
+      type="button"
+      class="btn-sair"
+      (click)="sair()"
+    >
+      Sair
     </button>
-  </form>
+  </div>
+
+
+  <mat-card class="form-card">
+
+    <mat-card-header>
+      <mat-card-title>
+        {{ editandoId ? 'Editar projeto' : 'Adicionar projeto' }}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <form [formGroup]="form" (ngSubmit)="salvar()">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nome do projeto</mat-label>
+
+          <input
+            matInput
+            id="nome"
+            formControlName="nome"
+          >
+
+          @if (
+            form.controls.nome.touched &&
+            form.controls.nome.invalid
+          ) {
+            <mat-error>
+              Informe o nome do projeto (mínimo 3 letras).
+            </mat-error>
+          }
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição</mat-label>
+
+          <textarea
+            matInput
+            id="descricao"
+            formControlName="descricao"
+            rows="3"
+          ></textarea>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tecnologias</mat-label>
+
+          <input
+            matInput
+            id="tecnologias"
+            formControlName="tecnologias"
+          >
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Link do GitHub</mat-label>
+
+          <input
+            matInput
+            id="link_github"
+            formControlName="link_github"
+          >
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Ano</mat-label>
+
+          <input
+            matInput
+            id="ano"
+            type="number"
+            formControlName="ano"
+          >
+
+          @if (
+            form.controls.ano.touched &&
+            form.controls.ano.invalid
+          ) {
+            <mat-error>
+              Informe o ano do projeto (ex.: 2026).
+            </mat-error>
+          }
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+
+          <mat-select formControlName="status">
+            <mat-option value="rascunho">
+              Rascunho
+            </mat-option>
+
+            <mat-option value="publicado">
+              Publicado
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="salvando"
+        >
+          {{
+            salvando
+              ? 'Salvando...'
+              : (editandoId ? 'Salvar alterações' : 'Adicionar projeto')
+          }}
+        </button>
+
+      </form>
+
+    </mat-card-content>
+
+  </mat-card>
+
 
   <h3>Projetos cadastrados</h3>
 
+
   @if (erro) {
-    <p class="erro-campo">{{ erro }}</p>
+    <p class="erro">{{ erro }}</p>
   }
 
-  @if (projetos.length === 0 && !erro) {
-    <p>Nenhum projeto cadastrado.</p>
-  }
 
   @if (projetos.length === 0 && !erro) {
     <p class="estado-vazio">
@@ -66,19 +150,52 @@
     </p>
   }
 
+
   @for (p of projetos; track p.id) {
-    <div class="linha-projeto">
-      <span>
-        {{ p.nome }} ({{ p.ano }}) — Status: {{ p.status }}
-      </span>
 
-      <button type="button" (click)="editar(p)">
-        Editar
-      </button>
+    <mat-card class="projeto-card">
 
-      <button type="button" (click)="excluir(p)">
-        Excluir
-      </button>
-    </div>
+      <mat-card-content>
+
+        <div class="projeto-info">
+
+          <div>
+            <strong>{{ p.nome }}</strong>
+
+            <span>
+              {{ p.ano }} — Status:
+              <strong>{{ p.status }}</strong>
+            </span>
+          </div>
+
+
+          <div class="acoes">
+
+            <button
+              mat-stroked-button
+              type="button"
+              (click)="editar(p)"
+            >
+              Editar
+            </button>
+
+            <button
+              mat-raised-button
+              color="warn"
+              type="button"
+              (click)="excluir(p)"
+            >
+              Excluir
+            </button>
+
+          </div>
+
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
   }
+
 </section>

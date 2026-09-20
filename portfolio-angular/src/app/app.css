@@ -1,7 +1,3 @@
-/* =========================
-   GERAL
-========================= */
-
 html,
 body {
   margin: 0;
@@ -14,10 +10,6 @@ body {
 .container {
   height: 100vh;
 }
-
-/* =========================
-   MENU LATERAL
-========================= */
 
 .sidenav {
   width: 250px;
@@ -38,11 +30,7 @@ body {
   font-weight: 700;
 }
 
-/* =========================
-   MENU SUPERIOR
-========================= */
-
-.mat-toolbar {
+mat-toolbar {
   background: #ffffff !important;
   color: #e91e63 !important;
   border-bottom: 1px solid #f7c5d8;
@@ -59,41 +47,29 @@ body {
   flex: 1 1 auto;
 }
 
-/* =========================
-   LINKS DO TOPO
-========================= */
-
-.mat-toolbar a {
+mat-toolbar a {
   color: #555 !important;
   font-weight: 600;
   transition: 0.3s;
 }
 
-.mat-toolbar a:hover {
+mat-toolbar a:hover {
   color: #e91e63 !important;
 }
 
-/* =========================
-   LINKS LATERAIS
-========================= */
-
-.mat-mdc-list-item {
-  margin: 6px 8px !important;
-  border-radius: 14px !important;
+mat-nav-list a {
+  margin: 6px 8px;
+  border-radius: 14px;
   color: #555 !important;
   transition: 0.3s;
 }
 
-.mat-mdc-list-item:hover {
+mat-nav-list a:hover {
   background: #fdeef4 !important;
   color: #e91e63 !important;
 }
 
-/* =========================
-   ITEM ATIVO
-========================= */
-
-.ativo {
+mat-nav-list a.ativo {
   background: linear-gradient(
     90deg,
     #fde6ef,
@@ -102,22 +78,14 @@ body {
 
   color: #e91e63 !important;
   font-weight: 700 !important;
-
   border-left: 4px solid #e91e63;
 }
-
-/* =========================
-   CONTEÚDO
-========================= */
 
 .conteudo {
   padding: 24px;
   background: #f4f2f7;
+  min-height: calc(100vh - 64px);
 }
-
-/* =========================
-   SCROLLBAR
-========================= */
 
 ::-webkit-scrollbar {
   width: 8px;
