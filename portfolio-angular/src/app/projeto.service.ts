@@ -17,7 +17,7 @@ export class ProjetoService {
   private http = inject(HttpClient);
 
   private url =
-    'https://jubilant-adventure-5g69x95p4gpwcvvgr-8000.app.github.dev/api/projetos.php';
+    'https://jubilant-adventure-5g69x95p4gpwcvvgr-3000.app.github.dev/api/projetos';
 
   listar(todos = false): Observable<Projeto[]> {
     const url = todos ? `${this.url}?todos=1` : this.url;
