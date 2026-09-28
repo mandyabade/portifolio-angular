@@ -1,0 +1,7 @@
+app.get('/api/projetos', async (req, res)=>{
+    const sql = "SELECT id, nome, descricao, tecnologias, link_github, ano FROM projetos WHERE status = 'publicado' ORDER BY ano_DESC, id";
+    //const [projetos] = await pool.query(sql);
+    const resultado = pool.query(sql);
+    console.log(resultado);
+    res.json(resultado);
+});

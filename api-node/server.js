@@ -2,40 +2,20 @@ const express = require('express');
 
 const app = express();
 const cors = require('cors');
+const pool = require('./db');
+
 const PORTA = 3000;
 app.use(cors());
 
-const projetos = [
-    {
-        id: 1,
-        nome: 'Portifolio Angular',
-        descricao: 'Meu portifolio com Angular e Angular Material',
-        tecnologias: 'Angular, TypeScript',
-        link_github: 'null',
-        ano: 2026
-    },
-
-    {
-        id: 2,
-        nome: 'API do Portifolio em PHP',
-        descricao: 'Endpoints de projetos e catalogo com PDO e MariaDB',
-        tecnologias: 'PHP, TypeScript',
-        link_github: 'null',
-        ano: 2026
-    },
-
-    {
-        id: 3,
-        nome: 'Sistema de Cadastro v1',
-        descricao: 'CRUD em PHP do 1o trimestre',
-        tecnologias: 'PHP, MariaDB, Bootstrap',
-        link_github: 'null',
-        ano: 2026
+app.get('/api/projetos', async (req, res) => {
+    const sql = "SELECT id, nome, descricao, tecnologias, link_github, ano FROM projetos WHERE status = 'publicado' ORDER BY ano DESC, id";
+    const [linhas] = await pool.execute(sql, [req.params.id]);
+    if (linhas.length === 0) {
+        return res.status(404).json({ erro: 'Projeto não encontrdo'})
     }
-];
-
-app.get('/api/projetos', (req, res)=>{
-    res.json(projetos);
+    //const resultado = pool.query(sql);
+    //console.log(resultado);
+    res.json(linhas[0]);
 });
 
 app.listen(PORTA, () => {
