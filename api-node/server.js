@@ -8,14 +8,40 @@ const PORTA = 3000;
 app.use(cors());
 
 app.get('/api/projetos', async (req, res) => {
-    const sql = "SELECT id, nome, descricao, tecnologias, link_github, ano FROM projetos WHERE status = 'publicado' ORDER BY ano DESC, id";
-    const [linhas] = await pool.execute(sql, [req.params.id]);
-    if (linhas.length === 0) {
-        return res.status(404).json({ erro: 'Projeto não encontrdo'})
+    try {
+        const sql = "SELECT id, nome, descricao, tecnologias, link_github, ano FROM projetos WHERE status = 'publicado' ORDER BY ano DESC, id";
+        const [projetos] = await pool.query(sql);
+        res.json(projetos);
+    } catch (erro) {
+        res.status(500).json({
+            erro: 'Falha no servidor: ' + erro.message
+        });
     }
-    //const resultado = pool.query(sql);
-    //console.log(resultado);
-    res.json(linhas[0]);
+});
+
+app.get('/api/projetos/:id', async (req, res) => {
+    try{
+        const sql = "SELECT id, nome, descricao, tecnologias, link_github, ano FROM projetos WHERE id = ? AND status = 'publicado'";
+        const [linhas] = await pool.execute(sql, [req.params.id]);
+        if (linhas.length === 0) {
+            return res.status(404).json({ erro: 'Projeto não encontrdo'})
+        }
+        res.json(linhas[0]);
+        } catch (erro){
+            res.status(500).json({ erro: 'Falha no servidor: ' + erro.message})
+        }
+    });
+
+app.get('/api/tecnologias', async (req, res) => {
+    try {
+        const sql = "SELECT id, nome, descricao, ano_criacao FROM tecnologias";
+        const [tecnologias] = await pool.query(sql);
+        res.json(tecnologias);
+    } catch (erro) {
+        res.status(500).json({
+            erro: 'Falha no servidor: ' + erro.message
+        });
+    }
 });
 
 app.listen(PORTA, () => {
