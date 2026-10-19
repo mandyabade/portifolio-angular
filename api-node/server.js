@@ -2,9 +2,12 @@ const express = require('express');
 
 const app = express();
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const pool = require('./db');
 
 const PORTA = 3000;
+const SEGREDO = 'piso-na-cara-do-inimigo-de-crocs';
 app.use(cors());
 app.use(express.json());
 
@@ -18,6 +21,35 @@ app.get('/api/projetos', async (req, res) => {
             erro: 'Falha no servidor: ' + erro.message
         });
     }
+});
+
+app.post('/api/login', async (req, res) => {
+  try {
+    const dados = req.body;
+    if (!dados || !dados.email || !dados.senha) {
+      return res.status(400).json({ erro: 'Informe email e senha' });
+    }
+    const [linhas] = await pool.execute(
+      'SELECT id, email, senha_hash FROM usuarios WHERE email = ?',
+      [dados.email]
+    );
+    const usuario = linhas[0];
+    if (!usuario) {
+      return res.status(401).json({ erro: 'Email ou senha invalidos' });
+    }
+    const confere = await bcrypt.compare(dados.senha, usuario.senha_hash);
+    if (!confere) {
+      return res.status(401).json({ erro: 'Email ou senha invalidos' });
+    }
+    const token = jwt.sign(
+      { id: usuario.id, email: usuario.email },
+      SEGREDO,
+      { expiresIn: '2h' }
+    );
+    res.json({ token });
+  } catch (erro) {
+    res.status(500).json({ erro: 'Falha no servidor: ' + erro.message });
+  }
 });
 
 app.get('/api/projetos/:id', async (req, res) => {
