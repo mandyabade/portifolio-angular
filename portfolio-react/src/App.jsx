@@ -1,32 +1,11 @@
 import Cabecalho from './Cabecalho';
 import CardProjeto from './CardProjeto';
 import Rodape from './Rodape';
+import projetos from './projetos';
+import Contato from './Contato';
+
 
 function App() {
-  const projetos = [
-    {
-      nome: 'Portfólio Angular',
-      descricao: 'Meu portfólio com Angular e Angular Material.',
-      tecnologias: 'Angular, TypeScript',
-      link_github: 'https://github.com/mandyabade/2026-DWII-portfolio-angular',
-      ano: 2026
-    },
-    {
-      nome: 'API do Portfólio em PHP',
-      descricao: 'Endpoints de projetos e catálogo com PDO e MariaDB.',
-      tecnologias: 'PHP, MariaDB',
-      link_github: null,
-      ano: 2026
-    },
-    {
-      nome: 'Sistema de cadastro v1',
-      descricao: 'CRUD em PHP do 1º trimestre.',
-      tecnologias: 'PHP, MariaDB, Bootstrap',
-      link_github: null,
-      ano: 2026
-    }
-  ];
-
   return (
     <>
       <Cabecalho />
@@ -34,10 +13,16 @@ function App() {
         <h2>Projetos</h2>
 
         <div className="cards">
-          {projetos.map((projeto, index) => (
-            <CardProjeto key={index} projeto={projeto} />
+          {projetos.map((p) => (
+            <CardProjeto key={p.id}
+              nome={p.nome}
+              descricao={p.descricao}
+              tecnologias={p.tecnologias}
+              link_github={p.link_github}
+              ano={p.ano} />
           ))}
         </div>
+        <Contato />
       </main>
       <Rodape />
     </>
