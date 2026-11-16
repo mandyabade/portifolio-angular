@@ -901,6 +901,12 @@ Se for descoberto, pode permitir a criação de tokens falsos.
 Deve ser armazenado em uma variável ou em um gerenciador de segredos.
 Na Aula 29 será configurado fora do código.
 
+--> Justificativa de tempo de validade
+O token possui a validade de 45 minuto para aumentar a segurança do processo. Caso um token seja exposto, ele não poderá ser utilizado indefinidamente, diminuindo o tempo em que alguém poderia acessar as rotas protegidas.
+
+--> Mensagem de erro no login
+Quando o email não existe ou a senha está incorreta, a API retorna a mensagem: "Email ou senha inválidos". Isso evita revelar se determinado email está cadastrado no sistema, dificultando tentativas de descobrir contas válidas.
+
 ## Rotas da API
 
 | Método HTTP | Rota | Exige token JWT? |
@@ -918,3 +924,29 @@ Na Aula 29 será configurado fora do código.
 | PUT | `/api/tecnologias/:id` | Sim |
 | DELETE | `/api/tecnologias/:id` | Sim |
 
+## Aula 25 - O Portfolio em React
+
+O front novo nasce em `portfolio-react/` (Vite + React), ao lado do Angular. Para rodar: 
+
+```bash
+cd portfolio-react/
+npm install
+npm run dev
+```
+A tela abre na porta 5173. Por enquanto os projetos sao fixos no `src/App.jsx`; a Aula 27 os traz da API.
+
+***Adiantamneto do checkpoint nível A***
+
+### Componentes e propriedades no React
+
+Organizei os projetos em uma lista no `App.jsx`, e cada projeto é enviado para o componente `CardProjeto` por meio de um único objeto: `<CardProjeto projeto={projeto} />`. Assim, consigo acessar as informações usando `projeto.nome`, `projeto.descricao`, `projeto.tecnologias`, `projeto.link_github` e `projeto.ano`, seguindo a estrutura de dados trabalhada na Aula 18. Também utilizei o método `map()` para percorrer a lista e mostrar todos os projetos na tela.
+
+Outra coisa que aprendi foi que, no JSX, usamos `className` em vez de `class` para definir as classes CSS, porque `className` é a propriedade utilizada pelo React para associar as classes aos elementos.
+
+## Aula 26: estado, lista e formulario
+
+Os projetos saíram do `App.jsx` e moram em `src/projetos.js`. A tela os desenha com `map`.
+
+O formulário de contato (`src/Contato.jsx`) guarda o que a pessoa digita no estado, com `useState`.
+
+Ele ainda não envia nada: avisa e limpa os campos. O envio de verdade chega com a API.
