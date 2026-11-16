@@ -111,3 +111,12 @@ button {
   color: #2e7d32;
   font-weight: bold;
 }
+
+.erro {
+    color: #b91c1c;
+    font-weight: bold;
+}
+
+.catalogo {
+    margin-top: 32px;
+}
